@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать</title>
+    <!-- подключаем бутстрап -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<!-- создаём контейнер -->
+<div class="container">
+    <div class="row">
+        <!-- указываем стиль адаптивной вёрстки -->
+        <div class="col-md-12">
+            <!-- пишем заголовок и пояснительный текст -->
+            <h2>Привет! Добро пожаловать на сайт.</h2>
+            <p>
+                <a href="login" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Войти</a>
+                <a href="registration" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Регистрация</a>
+                <a href="http://localhost/card/add" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Добавить карту</a>
+                <a href="http://localhost/card/all" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Показать все карты</a>
+                <!-- кнопка для выхода -->
+                <a href="logout.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Выход</a>
+            </p>
+        </div>
+    </div>
+</div>
+<script th:inline="javascript">
+    let token = [[${token.token}]];
+    localStorage.setItem('token', token);
+</script>
+</body>
+</html>

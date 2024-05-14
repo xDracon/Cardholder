@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Карты</title>
+</head>
+
+<style>
+    table th, table td {
+        padding: 5px;
+    }
+    .message {
+        color: blue;
+    }
+</style>
+
+<body>
+
+
+<h2>Карты</h2>
+
+<table border="1">
+    <tr>
+        <th>Number</th>
+    </tr>
+    <tr th:each ="card : ${cards}">
+        <td th:utext="${card.number}">...</td>
+    </tr>
+</table>
+
+</body>
+</html>

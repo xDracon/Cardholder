@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <!-- подключаем бутстрап -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- вся страница будет в одном контейнере -->
+<div class="container">
+    <div class="row">
+        <!-- делаем самую простую вёрстку -->
+        <div class="col-md-12">
+            <h2>Добавление карты</h2>
+            <p>Заполните все поля, чтобы добавить карту.</p>
+            <!-- форма регистрации -->
+            <form>
+                <!-- поле ввода номера карты -->
+                <div class="form-group">
+                    <label>Номер карты</label>
+                    <input type="text" id="number" name="number" class="form-control" required>
+                </div>
+
+                <!-- кнопка отправки данных на сервер -->
+                <div class="form-group">
+                    <button onclick="sendJSON()">Добавить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- скрипт, который обработает нажатие на кнопку и отправит данные на сервер -->
+<script>
+    // эта функция сработает при нажатии на кнопку
+    function sendJSON() {
+        let token = localStorage.getItem("token");
+        const tokenParts = token.split('.');
+        const decodedPayload = JSON.parse(atob(tokenParts[1]));
+        const Id = decodedPayload.Id;
+        // с помощью jQuery обращаемся к элементам на странице по их именам
+        let number = document.getElementById("number").value;
+        // создаём новый экземпляр запроса XHR
+        const xhr = new XMLHttpRequest();
+        // преобразуем наши данные JSON в строку
+        const data = JSON.stringify({number: number, userId: Id, shopName: 'FIXPRICE'});
+        // открываем соединение
+        xhr.open('POST', 'http://localhost/card/add', true);
+        // устанавливаем заголовок — выбираем тип контента, который отправится на сервер, в нашем случае мы явно пишем, что это JSON
+        xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        // когда всё готово, отправляем JSON на сервер
+        xhr.send(data);
+    }
+</script>
+</body>
+</html>

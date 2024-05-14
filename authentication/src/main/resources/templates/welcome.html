@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать</title>
+    <!-- подключаем бутстрап -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<!-- создаём контейнер -->
+<div class="container">
+    <div class="row">
+        <!-- указываем стиль адаптивной вёрстки -->
+        <div class="col-md-12">
+            <!-- пишем заголовок и пояснительный текст -->
+            <h2>Привет! Добро пожаловать на сайт.</h2>
+            <p>
+                <a href="login" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Войти</a>
+                <a href="registration" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Регистрация</a>
+                <a href="http://localhost/card/add" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Добавить карту</a>
+                <a onclick="allCards()" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Показать все карты</a>
+                <!-- кнопка для выхода -->
+                <a onclick="exit()" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Выход</a>
+            </p>
+        </div>
+    </div>
+</div>
+<div id="content"></div>
+<!-- скрипт, который обработает нажатие на кнопку и отправит данные на сервер -->
+<script>
+    // эта функция сработает при нажатии на кнопку
+    function allCards() {
+        let token = localStorage.getItem("token");
+        const tokenParts = token.split('.');
+        const decodedPayload = JSON.parse(atob(tokenParts[1]));
+        const Id = decodedPayload.Id;
+        const contentDiv = document.getElementById("content");
+        // создаём новый экземпляр запроса XHR
+        const xhr = new XMLHttpRequest();
+        xhr.onload = () => {
+            if (xhr.status == 200) {
+                contentDiv.innerHTML = xhr.responseText;  // выводим полученный ответ в contentDiv
+            } else {                                // иначе выводим текст статуса
+                console.log("Server response: ", xhr.statusText);
+            }
+        };
+        // открываем соединение
+        xhr.open('GET', 'http://localhost/card/all/'+Id, true);
+        // устанавливаем заголовок — выбираем тип контента, который отправится на сервер, в нашем случае мы явно пишем, что это JSON
+        xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+        // когда всё готово, отправляем JSON на сервер
+        xhr.send();
+    }
+
+    function exit() {
+        localStorage.clear();
+    }
+</script>
+</body>
+</html>
