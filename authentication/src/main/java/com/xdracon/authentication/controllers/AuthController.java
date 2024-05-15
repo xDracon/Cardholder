@@ -37,7 +37,6 @@ public class AuthController {
 
     @PostMapping("/login")
     public String aut(JwtRequest authRequest, Model model){
-        //String str= authService.createAuthToken(authRequest).toString();
         JwtResponse jwtResponse = new JwtResponse(authService.createAuthToken(authRequest));
         model.addAttribute("token", jwtResponse);
         return "success-login";

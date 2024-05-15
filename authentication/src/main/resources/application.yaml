@@ -11,4 +11,3 @@ spring:
     password: postgres
   main:
     allow-circular-references: true
-

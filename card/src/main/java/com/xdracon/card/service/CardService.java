@@ -8,6 +8,8 @@ import com.xdracon.card.repositories.CardRepository;
 
 import java.util.List;
 
+import static com.xdracon.card.CardApplication.log;
+
 @Service
 public class CardService {
     private CardRepository cardRepository;
@@ -24,6 +26,7 @@ public class CardService {
     }
 
     public List<Card> findByUserId(Long id) {
+        log.info("Отправлен список карт");
         return cardRepository.findByUserId(id);
     }
 
@@ -32,6 +35,7 @@ public class CardService {
         card.setNumber(cardDto.getNumber());
         card.setShops(List.of(shopService.getCardShop(cardDto.getShopName())));
         card.setUserId(cardDto.getUserId());
+        log.info("Карта добавлена");
         return cardRepository.save(card);
     }
 }

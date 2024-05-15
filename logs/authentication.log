@@ -1,0 +1,13 @@
+[2024-05-15 22:35:04,583] main com.xdracon.authentication.AuthenticationApplication 13 DEBUG  - Не работает
+[2024-05-15 22:37:32,194] main com.xdracon.authentication.AuthenticationApplication 13 DEBUG  - Не работает
+[2024-05-15 22:40:42,738] http-nio-8081-exec-6 com.xdracon.authentication.AuthenticationApplication 39 DEBUG  - Пользователь вошёл в систему
+[2024-05-15 22:44:16,626] http-nio-8081-exec-5 com.xdracon.authentication.AuthenticationApplication 39 INFO   - Пользователь вошёл в систему
+[2024-05-15 22:55:13,418] http-nio-8081-exec-6 com.xdracon.authentication.AuthenticationApplication 39 INFO   - Пользователь вошёл в систему
+[2024-05-15 22:55:56,334] http-nio-8081-exec-1 com.xdracon.authentication.AuthenticationApplication 39 INFO   - Пользователь вошёл в систему
+[2024-05-15 22:56:36,660] http-nio-8080-exec-4 com.xdracon.card.CardApplication 29 INFO   - Отправлен список карт
+[2024-05-15 22:57:27,862] http-nio-8080-exec-6 com.xdracon.card.CardApplication 29 INFO   - Отправлен список карт
+[2024-05-15 22:58:44,404] http-nio-8080-exec-8 com.xdracon.card.CardApplication 29 INFO   - Отправлен список карт
+[2024-05-15 22:59:55,715] http-nio-8081-exec-10 com.xdracon.authentication.AuthenticationApplication 39 INFO   - Пользователь вошёл в систему
+[2024-05-15 23:00:02,941] http-nio-8080-exec-2 com.xdracon.card.CardApplication 38 INFO   - Карта добавлена
+[2024-05-15 23:01:23,664] http-nio-8080-exec-6 com.xdracon.card.CardApplication 29 INFO   - Отправлен список карт
+[2024-05-15 23:06:17,259] http-nio-8081-exec-4 com.xdracon.authentication.AuthenticationApplication 39 INFO   - Пользователь вошёл в систему

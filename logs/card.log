@@ -1,0 +1,2 @@
+[2024-05-15 23:06:37,662] http-nio-8080-exec-2 com.xdracon.card.CardApplication 29 INFO   - Отправлен список карт
+[2024-05-15 23:08:41,113] http-nio-8080-exec-5 com.xdracon.card.CardApplication 38 INFO   - Карта добавлена
