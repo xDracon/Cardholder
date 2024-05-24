@@ -6,9 +6,15 @@ import com.xdracon.card.dtos.CardDto;
 import com.xdracon.card.entities.Card;
 import com.xdracon.card.repositories.CardRepository;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-import static com.xdracon.card.CardApplication.log;
 
 @Service
 public class CardService {
@@ -25,8 +31,29 @@ public class CardService {
         this.shopService = shopService;
     }
 
+    public void audit(String str){
+        try {
+            URL url = new URL("http://localhost:8082/audit");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
+
+            String params = "INFO=" + str;
+            byte[] postData = params.getBytes(StandardCharsets.UTF_8);
+
+            try (DataOutputStream wr = new DataOutputStream(conn.getOutputStream())) {
+                wr.write(postData);
+            }
+
+            try (BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"))) {
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public List<Card> findByUserId(Long id) {
-        log.info("Отправлен список карт");
+        audit("List of cards sent");
         return cardRepository.findByUserId(id);
     }
 
@@ -35,7 +62,7 @@ public class CardService {
         card.setNumber(cardDto.getNumber());
         card.setShops(List.of(shopService.getCardShop(cardDto.getShopName())));
         card.setUserId(cardDto.getUserId());
-        log.info("Карта добавлена");
+        audit("Card added");
         return cardRepository.save(card);
     }
 }

@@ -21,7 +21,7 @@ CREATE TABLE cards_shops (
 
 insert into shops (name)
 values
-    ('MAGNIT'), ('FIXPRICE');
+    ('MAGNIT'), ('FIXPRICE'), ('SPORTMASTER'), ('LENTA'), ('IKEA');
 
 insert into cards (number, user_id)
 values

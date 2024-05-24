@@ -11,3 +11,5 @@ spring:
     password: postgres
   main:
     allow-circular-references: true
+logging:
+  file.name: logAuthenticationService.txt

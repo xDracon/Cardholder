@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Карты</title>
 </head>
 
@@ -20,10 +21,12 @@
 
 <table border="1">
     <tr>
-        <th>Number</th>
+        <th>Номер</th>
+        <th>Магазин</th>
     </tr>
     <tr th:each ="card : ${cards}">
         <td th:utext="${card.number}">...</td>
+        <td th:utext="${card.shops}">...</td>
     </tr>
 </table>
 

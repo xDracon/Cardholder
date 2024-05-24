@@ -23,9 +23,18 @@
                     <input type="text" id="number" name="number" class="form-control" required>
                 </div>
 
+                <select id="shop" name="shop" class="form-group">
+                    <option selected>Выберите магазин</option>
+                    <option value="MAGNIT">Магнит</option>
+                    <option value="FIXPRICE">Fix Price</option>
+                    <option value="SPORTMASTER">Спортмастер</option>
+                    <option value="LENTA">Лента</option>
+                    <option value="IKEA">IKEA</option>
+                </select>
+
                 <!-- кнопка отправки данных на сервер -->
                 <div class="form-group">
-                    <button onclick="sendJSON()">Добавить</button>
+                    <button class="btn btn-primary" onclick="sendJSON()">Добавить</button>
                 </div>
             </form>
         </div>
@@ -41,10 +50,12 @@
         const Id = decodedPayload.Id;
         // с помощью jQuery обращаемся к элементам на странице по их именам
         let number = document.getElementById("number").value;
+        let shop = document.getElementById("shop").value;
+        console.log(shop);
         // создаём новый экземпляр запроса XHR
         const xhr = new XMLHttpRequest();
         // преобразуем наши данные JSON в строку
-        const data = JSON.stringify({number: number, userId: Id, shopName: 'FIXPRICE'});
+        const data = JSON.stringify({number: number, userId: Id, shopName: shop});
         // открываем соединение
         xhr.open('POST', 'http://localhost/card/add', true);
         // устанавливаем заголовок — выбираем тип контента, который отправится на сервер, в нашем случае мы явно пишем, что это JSON

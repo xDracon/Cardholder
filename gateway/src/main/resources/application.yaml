@@ -9,6 +9,7 @@ logging:
       springframework:
         cloud:
           gateway: TRACE
+  file.name: logGateway.txt
 
 spring:
   cloud:
