@@ -31,7 +31,7 @@ public class CardService {
         this.shopService = shopService;
     }
 
-    public void audit(String str){
+    public static void audit(String str){
         try {
             URL url = new URL("http://localhost:8082/audit");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();

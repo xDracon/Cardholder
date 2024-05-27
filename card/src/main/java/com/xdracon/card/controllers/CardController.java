@@ -5,19 +5,18 @@ import com.xdracon.card.repositories.CardRepository;
 import com.xdracon.card.service.CardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.xdracon.card.dtos.CardDto;
-import com.xdracon.card.service.AuthService;
+import com.xdracon.card.service.TransferService;
 
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 public class CardController {
-    private final AuthService authService;
+    private final TransferService transferService;
     private final CardService cardService;
     @Autowired
     private final CardRepository cardRepository;
@@ -27,9 +26,9 @@ public class CardController {
         return "addCard";
     }
 
-    @PostMapping("/card/add")
+    @PostMapping("/card/save")
     public String createNewCard(@RequestBody CardDto cardDto) {
-        authService.createNewCard(cardDto);
+        transferService.createNewCard(cardDto);
         return "addCard";
     }
 

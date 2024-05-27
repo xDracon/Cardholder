@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Вход</title>
+    <title>Добавление карты</title>
     <!-- подключаем бутстрап -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -56,7 +56,7 @@
         // преобразуем наши данные JSON в строку
         const data = JSON.stringify({number: number, userId: Id, shopName: shop});
         // открываем соединение
-        xhr.open('POST', 'http://localhost/card/add', true);
+        xhr.open('POST', 'http://localhost/card/save', true);
         // устанавливаем заголовок — выбираем тип контента, который отправится на сервер, в нашем случае мы явно пишем, что это JSON
         xhr.setRequestHeader('Authorization', 'Bearer ' + token);
         xhr.setRequestHeader('Content-Type', 'application/json');

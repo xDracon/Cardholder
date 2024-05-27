@@ -31,7 +31,7 @@ public class AuthService {
     private final JwtTokenUtils jwtTokenUtils;
     private final AuthenticationManager authenticationManager;
 
-    public void audit(String str){
+    public static void audit(String str){
         try {
             URL url = new URL("http://localhost:8082/audit");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();

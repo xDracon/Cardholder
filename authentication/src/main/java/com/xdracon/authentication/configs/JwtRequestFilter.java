@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
+import static com.xdracon.authentication.service.AuthService.audit;
+
 @Component
 @RequiredArgsConstructor
 @Slf4j
@@ -34,9 +36,9 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             try {
                 username = jwtTokenUtils.getUsername(jwt);
             } catch (ExpiredJwtException e) {
-                log.debug("Время жизни токена вышло");
+                audit("Token lifetime has expired");
             } catch (SignatureException e) {
-                log.debug("Подпись неправильная");
+                audit("The signature is incorrect");
             }
         }
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {

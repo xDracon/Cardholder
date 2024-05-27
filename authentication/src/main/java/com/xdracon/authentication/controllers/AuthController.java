@@ -43,7 +43,8 @@ public class AuthController {
     }
 
     @PostMapping("/registration")
-    public ResponseEntity<?> createNewUser(RegistrationUserDto registrationUserDto) {
-        return authService.createNewUser(registrationUserDto);
+    public String createNewUser(RegistrationUserDto registrationUserDto) {
+        authService.createNewUser(registrationUserDto);
+        return "welcome";
     }
 }
