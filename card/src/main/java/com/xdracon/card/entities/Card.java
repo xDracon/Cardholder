@@ -27,4 +27,10 @@ public class Card {
             inverseJoinColumns = @JoinColumn(name = "shop_id")
     )
     private Collection<Shop> shops;
+
+    public String getShopName()
+    {
+        String name=shops.toString();
+        return name.substring(name.indexOf("name=") + 5, name.length()-2);
+    }
 }

@@ -26,7 +26,7 @@
     </tr>
     <tr th:each ="card : ${cards}">
         <td th:utext="${card.number}">...</td>
-        <td th:utext="${card.shops}">...</td>
+        <td th:utext="${card.getShopName()}">...</td>
     </tr>
 </table>
 
